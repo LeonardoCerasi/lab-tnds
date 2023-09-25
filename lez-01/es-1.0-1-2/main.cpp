@@ -15,7 +15,7 @@ int main(int argc, char** argv)
     int n_data = std::atoi(argv[1]);
     char *path = argv[2];
 
-    double *data = read_file(path, n_data);
+    double *data = ReadDataFromFile(path, n_data);
 
     std::cout << "Read data:" << std::endl;
     for (int i = 0; i < n_data; i++)
@@ -23,16 +23,16 @@ int main(int argc, char** argv)
         std::cout << data[i] << std::endl;
     }
 
-    std::cout << "\nTheir mean is: " << mean(n_data, data) << std::endl;
-    std::cout << "\nTheir variance is: " << variance(n_data, data) << std::endl;
+    std::cout << "\nTheir mean is: " << CalcolaMedia(n_data, data) << std::endl;
+    std::cout << "\nTheir variance is: " << CalcolaVarianza(n_data, data) << std::endl;
 
-    sel_sort(n_data, data);
+    selection_sort(n_data, data);
 
-    std::cout << "\nTheir median is: " << median(n_data, data) << std::endl;
+    std::cout << "\nTheir median is: " << CalcolaMediana(n_data, data) << std::endl;
 
     if (argv[3])
     {
-        write_file(argv[3], n_data, data);
+        Print(argv[3], n_data, data);
     }
 
     return 0;

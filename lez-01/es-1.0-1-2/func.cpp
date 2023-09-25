@@ -1,6 +1,6 @@
 #include "func.h"
 
-double *read_file(const char *path, int n_data)
+double *ReadDataFromFile(const char *path, int n_data)
 {
     std::ifstream input(path);
 
@@ -33,7 +33,7 @@ double *read_file(const char *path, int n_data)
     return array;
 }
 
-double mean (int n_data, double *data)
+double CalcolaMedia (int n_data, double *data)
 {
     double mean = 0;
 
@@ -45,9 +45,9 @@ double mean (int n_data, double *data)
     return (mean / double(n_data));
 }
 
-double variance (int n_data, double *data)
+double CalcolaVarianza (int n_data, double *data)
 {
-    double sample_mean = mean(n_data, data);
+    double sample_mean = CalcolaMedia(n_data, data);
     double variance = 0;
 
     for (int i = 0; i < n_data; i++)
@@ -58,14 +58,14 @@ double variance (int n_data, double *data)
     return (variance / double(n_data));
 }
 
-void swap (double &a, double &b)
+void ScambiaByRef (double &a, double &b)
 {
     double temp = b;
     b = a;
     a = temp;
 }
 
-void sel_sort (int n_data, double *data)
+void selection_sort (int n_data, double *data)
 {
     for (int i = 0; i < n_data - 1; i++)
     {
@@ -73,13 +73,13 @@ void sel_sort (int n_data, double *data)
         {
             if (data[i] > data[j])
             {
-                swap(data[i], data[j]);
+                ScambiaByRef(data[i], data[j]);
             }
         }
     }
 }
 
-double median(int n_data, double *data)
+double CalcolaMediana(int n_data, double *data)
 {
     if (n_data % 2 == 0)
     {
@@ -91,7 +91,7 @@ double median(int n_data, double *data)
     }
 }
 
-void write_file(const char *path, int n_data, double *data)
+void Print(const char *path, int n_data, double *data)
 {
     std::ofstream output (path);
 
