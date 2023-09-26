@@ -1,4 +1,7 @@
 *.txt
 *.o
+*.dat
+*.in
+*.out
 
 .vscode/
