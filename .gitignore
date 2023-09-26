@@ -4,4 +4,7 @@
 *.in
 *.out
 
+main
+exec
+
 .vscode/
