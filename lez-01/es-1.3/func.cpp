@@ -108,6 +108,6 @@ void Print(int n_data, double *data)
 {
     for (int i = 0; i < n_data; i++)
     {
-        std::cout << data[n_data] << std::endl;
+        std::cout << data[i] << std::endl;
     }
 }

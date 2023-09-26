@@ -17,12 +17,6 @@ int main(int argc, char** argv)
 
     double *data = ReadDataFromFile(path, n_data);
 
-    std::cout << "Read data:" << std::endl;
-    for (int i = 0; i < n_data; i++)
-    {
-        std::cout << data[i] << std::endl;
-    }
-
     std::cout << "\nTheir mean is: " << CalcolaMedia(n_data, data) << std::endl;
     std::cout << "\nTheir variance is: " << CalcolaVarianza(n_data, data) << std::endl;
 
