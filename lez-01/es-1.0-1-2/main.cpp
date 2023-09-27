@@ -7,7 +7,7 @@ int main(int argc, char** argv)
 {
     if (argc < 3)
     {
-        std::cout << "Use the code as follows: " << argv[0] << "<n_data> <file_path>" << std::endl;
+        std::cout << "Use the code as follows: " << argv[0] << " <n_data> <file_path>" << std::endl;
 
         return -1;
     }
