@@ -5,7 +5,7 @@
 *.out
 *.test
 
-
+main
 exec
 
 .vscode/
