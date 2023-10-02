@@ -19,7 +19,7 @@ class Vettore
 
         ~Vettore () { delete[] vect; }
 
-        Vettore(int n);
+        Vettore (int n);
 
         int get_dim () const { return dim; }
 

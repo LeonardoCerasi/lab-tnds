@@ -1,6 +1,6 @@
 #include "vettore.h"
 
-Vettore::Vettore(int n)
+Vettore::Vettore (int n)
 {
     if (n <= 0)
     {
@@ -15,7 +15,7 @@ Vettore::Vettore(int n)
     }
 }
 
-void Vettore::set_comp(int index, double comp)
+void Vettore::set_comp (int index, double comp)
 {
     if (index >= this->dim)
     {
@@ -27,7 +27,7 @@ void Vettore::set_comp(int index, double comp)
     }
 }
 
-double Vettore::get_comp(int index) const
+double Vettore::get_comp (int index) const
 {
     if (index >= this->dim)
     {
