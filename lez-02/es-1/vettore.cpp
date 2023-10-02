@@ -4,7 +4,7 @@ Vettore::Vettore(int n)
 {
     if (n <= 0)
     {
-        std::cerr << "Dimension must be positive" << std::endl;
+        std::cerr << "Dimension must be positive, but " << n << " was given." << std::endl;
     }
     else
     {
@@ -17,18 +17,43 @@ Vettore::Vettore(int n)
 
 void Vettore::set_comp(int index, double comp)
 {
-    this->vect[index] = comp;
+    if (index >= this->dim)
+    {
+        std::cerr << "Index " << index << " out of range " << this->dim << "." << std::endl;
+    }
+    else
+    {
+        this->vect[index] = comp;
+    }
 }
 
 double Vettore::get_comp(int index) const
 {
-    return this->vect[index];
+    if (index >= this->dim)
+    {
+        std::cerr << "Index " << index << " out of range " << this->dim << "." << std::endl;
+    }
+    else
+    {
+        return this->vect[index];
+    }
 }
 
 void Vettore::swap (int index_1, int index_2)
 {
-    double temp = this->vect[index_1];
+    if (index_1 >= this->dim)
+    {
+        std::cerr << "Index " << index_1 << " out of range " << this->dim << "." << std::endl;
+    }
+    else if (index_2 >= this->dim)
+    {
+        std::cerr << "Index " << index_2 << " out of range " << this->dim << "." << std::endl;
+    }
+    else
+    {
+        double temp = this->vect[index_1];
 
-    this->set_comp(index_1, this->vect[index_2]);
-    this->set_comp(index_2, temp);
+        this->set_comp(index_1, this->vect[index_2]);
+        this->set_comp(index_2, temp);
+    }
 }
