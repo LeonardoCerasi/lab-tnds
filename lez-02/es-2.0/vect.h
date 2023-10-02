@@ -2,24 +2,25 @@
 
 #include <iostream>
 
-class Vettore
+class Vector
 {
     private:
 
         int dim;
-        double *vect;
+
+        double *vector;
     
     public:
 
-        Vettore ()
+        Vector ()
         {
             dim = 0;
-            vect = NULL;
+            vector = NULL;
         }
 
-        ~Vettore () { delete[] vect; }
+        ~Vector () { delete[] vector; }
 
-        Vettore (int n);
+        Vector (int n);
 
         int get_dim () const { return dim; }
 
