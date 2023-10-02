@@ -15,7 +15,7 @@ int main(int argc, char** argv)
     int n_data = std::atoi(argv[1]);
     char *path = argv[2];
 
-    double *data = ReadDataFromFile(path, n_data);
+    double *data = read_file(path, n_data);
 
     std::cout << "Read data:" << std::endl;
     for (int i = 0; i < n_data; i++)

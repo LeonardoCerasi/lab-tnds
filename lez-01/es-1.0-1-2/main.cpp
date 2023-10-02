@@ -15,7 +15,7 @@ int main(int argc, char** argv)
     int n_data = std::atoi(argv[1]);
     char *path = argv[2];
 
-    double *data = ReadDataFromFile(path, n_data);
+    double *data = read_file(path, n_data);
 
     std::cout << "\nTheir mean is: " << CalcolaMedia(n_data, data) << std::endl;
     std::cout << "\nTheir variance is: " << CalcolaVarianza(n_data, data) << std::endl;

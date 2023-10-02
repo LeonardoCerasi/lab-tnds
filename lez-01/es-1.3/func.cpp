@@ -1,6 +1,6 @@
 #include "func.h"
 
-double *ReadDataFromFile(const char *path, int n_data)
+double *read_file(const char *path, int n_data)
 {
     std::ifstream input(path);
 
@@ -58,7 +58,7 @@ double CalcolaVarianza (int n_data, double *data)
     return (variance / double(n_data));
 }
 
-void ScambiaByRef (double &a, double &b)
+void swap (double &a, double &b)
 {
     double temp = b;
     b = a;
@@ -73,7 +73,7 @@ void selection_sort (int n_data, double *data)
         {
             if (data[i] > data[j])
             {
-                ScambiaByRef(data[i], data[j]);
+                swap(data[i], data[j]);
             }
         }
     }
