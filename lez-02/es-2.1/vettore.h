@@ -25,8 +25,6 @@ class Vettore
 
         Vettore& operator = (const Vettore &vect);
 
-        Vettore& operator = (Vettore &&vect);
-
         double& operator [] (int index);
 
         int get_dim () const { return dim; }

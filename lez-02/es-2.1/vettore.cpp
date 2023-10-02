@@ -35,21 +35,6 @@ Vettore& Vettore::operator = (const Vettore &vect)
     return *this;
 }
 
-Vettore& Vettore::operator = (Vettore &&vect)
-{
-    this->dim = vect.dim;
-
-    if (this->vect) { delete[] this->vect; }
-    this->vect = new double[this->dim];
-
-    for (int i = 0; i < dim; i++) { this->vect[i] = vect.vect[i]; }
-
-    vect.dim = 0;
-    vect.vect = nullptr;
-
-    return *this;
-}
-
 double& Vettore::operator [] (int index)
 {
     if (index >= this->dim)
