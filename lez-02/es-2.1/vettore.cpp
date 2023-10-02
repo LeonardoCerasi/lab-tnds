@@ -1,6 +1,6 @@
 #include "vettore.h"
 
-Vettore::Vettore(int n)
+Vettore::Vettore (int n)
 {
     if (n <= 0)
     {
@@ -15,7 +15,54 @@ Vettore::Vettore(int n)
     }
 }
 
-void Vettore::set_comp(int index, double comp)
+Vettore::Vettore(const Vettore &vect)
+{
+    this->dim = vect.dim;
+    this->vect = new double[this->dim];
+
+    for (int i = 0; i < dim; i++) { this->vect[i] = vect.vect[i]; }
+}
+
+Vettore& Vettore::operator = (const Vettore &vect)
+{
+    this->dim = vect.dim;
+
+    if (this->vect) { delete[] this->vect; }
+    this->vect = new double[this->dim];
+
+    for (int i = 0; i < dim; i++) { this->vect[i] = vect.vect[i]; }
+
+    return *this;
+}
+
+Vettore& Vettore::operator = (Vettore &&vect)
+{
+    this->dim = vect.dim;
+
+    if (this->vect) { delete[] this->vect; }
+    this->vect = new double[this->dim];
+
+    for (int i = 0; i < dim; i++) { this->vect[i] = vect.vect[i]; }
+
+    vect.dim = 0;
+    vect.vect = nullptr;
+
+    return *this;
+}
+
+double& Vettore::operator [] (int index)
+{
+    if (index >= this->dim)
+    {
+        std::cerr << "Index " << index << " out of range " << this->dim << "." << std::endl;
+    }
+    else
+    {
+        return this->vect[index];
+    }
+}
+
+void Vettore::set_comp (int index, double comp)
 {
     if (index >= this->dim)
     {
@@ -27,7 +74,7 @@ void Vettore::set_comp(int index, double comp)
     }
 }
 
-double Vettore::get_comp(int index) const
+double Vettore::get_comp (int index) const
 {
     if (index >= this->dim)
     {

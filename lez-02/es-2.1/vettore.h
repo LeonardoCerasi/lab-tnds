@@ -19,7 +19,15 @@ class Vettore
 
         ~Vettore () { delete[] vect; }
 
-        Vettore(int n);
+        Vettore (int n);
+
+        Vettore (const Vettore &vect);
+
+        Vettore& operator = (const Vettore &vect);
+
+        Vettore& operator = (Vettore &&vect);
+
+        double& operator [] (int index);
 
         int get_dim () const { return dim; }
 
