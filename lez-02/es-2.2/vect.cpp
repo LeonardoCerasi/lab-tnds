@@ -4,7 +4,7 @@ Vector::Vector (int n)
 {
     if (n <= 0)
     {
-        std::cerr << "Dimension must be positive, but " << n << " was given." << std::endl;
+        throw std::invalid_argument("Dimension must be positive, but " + std::to_string(n) + " was given.");
     }
     else
     {
@@ -54,7 +54,7 @@ double &Vector::operator [] (int index)
 {
     if (index >= dim)
     {
-        std::cerr << "Index " << index << " out of range " << dim << "." << std::endl;
+        throw std::invalid_argument("Index " + std::to_string(index) + " out of range " + std::to_string(dim) + ".");
     }
     else
     {
@@ -66,7 +66,7 @@ void Vector::set_comp (int index, double comp)
 {
     if (index >= dim)
     {
-        std::cerr << "Index " << index << " out of range " << dim << "." << std::endl;
+        throw std::invalid_argument("Index " + std::to_string(index) + " out of range " + std::to_string(dim) + ".");
     }
     else
     {
@@ -78,7 +78,7 @@ double Vector::get_comp (int index) const
 {
     if (index >= dim)
     {
-        std::cerr << "Index " << index << " out of range " << dim << "." << std::endl;
+        throw std::invalid_argument("Index " + std::to_string(index) + " out of range " + std::to_string(dim) + ".");
     }
     else
     {
@@ -90,11 +90,11 @@ void Vector::swap (int index_1, int index_2)
 {
     if (index_1 >= dim)
     {
-        std::cerr << "Index " << index_1 << " out of range " << dim << "." << std::endl;
+        throw std::invalid_argument("Index " + std::to_string(index_1) + " out of range " + std::to_string(dim) + ".");
     }
     else if (index_2 >= dim)
     {
-        std::cerr << "Index " << index_2 << " out of range " << dim << "." << std::endl;
+        throw std::invalid_argument("Index " + std::to_string(index_2) + " out of range " + std::to_string(dim) + ".");
     }
     else
     {
