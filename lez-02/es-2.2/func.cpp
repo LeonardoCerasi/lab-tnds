@@ -66,7 +66,7 @@ double stat::mean (const Vector &vect)
 
     for (int i = 0; i < vect.get_dim(); i++)
     {
-        mean += vect.get_comp(i);
+        mean += vect[i];
     }
 
     return (mean / double(vect.get_dim()));
@@ -79,7 +79,7 @@ double stat::variance (const Vector &vect)
 
     for (int i = 0; i < vect.get_dim(); i++)
     {
-        variance += pow(vect.get_comp(i) - mean, 2);
+        variance += pow(vect[i] - mean, 2);
     }
 
     return (variance / double(vect.get_dim()));
@@ -89,11 +89,11 @@ double stat::median(const Vector &vect)
 {
     if (vect.get_dim() % 2 == 0)
     {
-        return (vect.get_comp(vect.get_dim() / 2 - 1) + vect.get_comp(vect.get_dim() / 2)) / 2;
+        return (vect[vect.get_dim() / 2 - 1] + vect[vect.get_dim() / 2]) / 2;
     }
     else
     {
-        return vect.get_comp(vect.get_dim() / 2 - 1);
+        return vect[vect.get_dim() / 2 - 1];
     }
 }
 
@@ -104,7 +104,7 @@ void print(const char *path, const Vector &vect)
     output << "Reordered data:\n" << std::endl;
     for (int i = 0; i < vect.get_dim(); i++)
     {
-        output << vect.get_comp(i) << std::endl;
+        output << vect[i] << std::endl;
     }
 
     output.close();
@@ -114,6 +114,6 @@ void print(const Vector &vect)
 {
     for (int i = 0; i < vect.get_dim(); i++)
     {
-        std::cout << vect.get_comp(i) << std::endl;
+        std::cout << vect[i] << std::endl;
     }
 }

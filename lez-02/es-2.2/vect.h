@@ -30,7 +30,7 @@ class Vector
 
         Vector &operator = (Vector &&vect);
 
-        double &operator [] (int index);
+        double &operator [] (int index) const;
 
         int get_dim () const { return dim; }
 

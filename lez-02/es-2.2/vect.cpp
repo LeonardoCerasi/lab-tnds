@@ -50,7 +50,7 @@ Vector &Vector::operator = (Vector &&vect)
     return *this;
 }
 
-double &Vector::operator [] (int index)
+double &Vector::operator [] (int index) const
 {
     if (index >= dim)
     {
