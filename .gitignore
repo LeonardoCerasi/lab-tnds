@@ -4,6 +4,7 @@
 *.in
 *.out
 *.test
+*.png
 
 main
 exec
