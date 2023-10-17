@@ -22,34 +22,22 @@ std::vector<std::vector<Type>> read_file(const char *path)
         throw std::invalid_argument("Error while opening " + path_s + " : file does not exist.");
     }
 
-    // std::vector<Type> temp_v;
-    // std::string temp_s;
-    // Type temp_t;
-    // 
-    // getline(input, temp_s);
-    // while (!input.eof())
-    // {
-    //     std::stringstream temp_ss (temp_s);
-    //     while (temp_ss >> temp_t)
-    //     {
-    //         temp_v.push_back(temp_t);
-    //     }
-    // 
-    //     array.push_back(temp_v);
-    //     delete[] &temp_v;
-    // 
-    //     getline(input, temp_s);
-    // }
-
-    std::string temp;
-    Type col_1, col_2, col_3;
-
-    while (std::getline(input, temp))
+    std::string temp_s;
+    Type temp_t;
+    
+    getline(input, temp_s);
+    while (!input.eof())
     {
-        std::stringstream temp_ss (temp);
-        temp_ss >> col_1 >> col_2 >> col_3;
-
-        array.push_back({col_1, col_2, col_3});
+        std::vector<Type> temp_v;
+        std::stringstream temp_ss (temp_s);
+        while (temp_ss >> temp_t)
+        {
+            temp_v.push_back(temp_t);
+        }
+    
+        array.push_back(temp_v);
+    
+        getline(input, temp_s);
     }
 
     input.close();
@@ -89,4 +77,16 @@ std::vector<double> linear_regression(std::vector<double> x, std::vector<double>
     double r = slope * sqrt(delta_x / delta_y);
 
     return {slope, inter, slope_err, inter_err, df, r};
+}
+
+double chi2(std::vector<double> x, std::vector<double> y, std::vector<double> err, double slope, double inter)
+{
+    double chi = 0;
+
+    for (int i = 0; i < (int) x.size(); i++)
+    {
+        chi += pow((y[i] - slope * x[i] - inter) / pow(err[i], 2), 2);
+    }
+
+    return chi;
 }

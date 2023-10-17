@@ -45,6 +45,7 @@ int main(int argc, char **argv)
     }
 
     std::vector<double> lin_reg = linear_regression(Delta_V, rB2, rB2_err);
+    double chi2 = chi_squared(Delta_V, rB2, rB2_err, lin_reg[0], lin_reg[1]);
 
     std::ofstream output (output_path);
     output << "Linear regression: " << std::endl;
@@ -53,13 +54,21 @@ int main(int argc, char **argv)
     output << "Slope error: " << lin_reg[2] << std::endl;
     output << "Intercept error: " << lin_reg[3] << std::endl;
     output << "Degree of freedom: " << lin_reg[4] << std::endl;
-    output << "Linear correlation: " << lin_reg[5] << std::endl;
+    output << "Linear correlation: " << lin_reg[5] << std::endl << std::endl;
+    output << "Chi squared: " << chi2 << std::endl;
     output.close();
 
-    auto canvas = new TCanvas("canvas", "Measurments", 200, 10, 1200, 1200);
-    canvas->SetGrid();
-    // per qualche motivo non funziona
-    // auto graph = new TGraphErrors(Delta_V.size(), &Delta_V, &rB2, nullptr, &rB2_err);
+    TCanvas canvas;
+    canvas.cd();
+    canvas.SetGrid();
+    TGraphErrors graph;
+    for (int i = 0; i < (int) Delta_V.size(); i++)
+      {
+        graph.SetPoint(i, Delta_V[i], rB2[i]);
+        graph.SetPointError(i, 0, rB2_err[i]);
+      }
+    graph.Draw("AP");
+    canvas.SaveAs("graph.png");
 
     return 0;
 }
