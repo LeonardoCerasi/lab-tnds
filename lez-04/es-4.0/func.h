@@ -81,12 +81,12 @@ std::vector<double> linear_regression(std::vector<double> x, std::vector<double>
 
 double chi_squared(std::vector<double> x, std::vector<double> y, std::vector<double> err, double slope, double inter)
 {
-    double chi = 0;
+    double chi2 = 0;
 
     for (int i = 0; i < (int) x.size(); i++)
     {
-        chi += pow((y[i] - slope * x[i] - inter) / pow(err[i], 2), 2);
+        chi2 += pow((y[i] - slope * x[i] - inter) / pow(err[i], 2), 2);
     }
 
-    return chi;
+    return chi2;
 }
