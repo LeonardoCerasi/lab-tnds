@@ -79,7 +79,7 @@ std::vector<double> linear_regression(std::vector<double> x, std::vector<double>
     return {slope, inter, slope_err, inter_err, df, r};
 }
 
-double chi2(std::vector<double> x, std::vector<double> y, std::vector<double> err, double slope, double inter)
+double chi_squared(std::vector<double> x, std::vector<double> y, std::vector<double> err, double slope, double inter)
 {
     double chi = 0;
 
