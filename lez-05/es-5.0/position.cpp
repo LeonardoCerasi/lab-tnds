@@ -61,7 +61,7 @@ double position::get_coordinate (char type, int n) const
             {
                 case 0: return sqrt(x*x + y*y + z*z); // r
                 case 1: return atan(y / x); // phi
-                case 2: return acos(z / (x*x + y*y + z*z)); // theta
+                case 2: return acos(z / sqrt(x*x + y*y + z*z)); // theta
 
                 default:
                     throw std::invalid_argument("Coordinate number must be 0, 1 or 2, but " + std::to_string(n) + " was given.");
@@ -73,7 +73,7 @@ double position::get_coordinate (char type, int n) const
             {
                 case 0: return sqrt(x*x + y*y); // rho
                 case 1: return atan(y / x); // phi
-                case 2: return acos(z / (x*x + y*y + z*z)); // theta
+                case 2: return acos(z / sqrt(x*x + y*y + z*z)); // theta
 
                 default:
                     throw std::invalid_argument("Coordinate number must be 0, 1 or 2, but " + std::to_string(n) + " was given.");
