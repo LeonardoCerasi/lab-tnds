@@ -7,8 +7,8 @@
 #include "particle.h"
 #include "vector_field.h"
 
-const double K = 8.9875517923e9;
-const double G = 6.67430e-11;
+const double k = 8.9875517923e9;
+const double g = 6.67430e-11;
 
 class point_particle : public particle, public position
 {
