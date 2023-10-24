@@ -5,9 +5,13 @@
 #include "particle.h"
 #include "vector_field.h"
 #include "point_particle.h"
+#include "assert.h"
 
 int main(int argc, char** argv)
 {
+    test::test_positions();
+    test::test_fields();
+    
     if (argc != 5)
     {
         std::cerr << "Usage of the programm: " << argv[0] << " <n> <x> <y> <z>" << std::endl;
