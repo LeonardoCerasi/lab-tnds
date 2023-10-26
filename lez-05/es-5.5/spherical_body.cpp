@@ -4,11 +4,11 @@
 
 spherical_body::spherical_body(double M, double R) : m{M}, r{R} {}
 
-spherical_body::spherical_body (double M, double R, double X, double Y, double Z) : m{M}, r{R}, position(X, Y, Z) {}
+spherical_body::spherical_body(double M, double R, double X, double Y, double Z) : position(X, Y, Z) , m{M}, r{R} {}
 
-spherical_body::spherical_body(double M, double R, char type, double X, double Y, double Z) : m{M}, r{R}, position(type, X, Y, Z) {}
+spherical_body::spherical_body(double M, double R, char type, double X, double Y, double Z) : position(type, X, Y, Z) , m{M}, r{R} {}
 
-spherical_body::spherical_body (double M, double R, const position& P) : m{M}, r{R}, position(P) {}
+spherical_body::spherical_body(double M, double R, const position &P) : position(P), m{M}, r{R} {}
 
 // set methods
 
