@@ -22,12 +22,13 @@ int main(int argc, char** argv)
     double phi_goce{std::asin(delta / (r_t + d))};
     double phi_mount{std::asin(r / (r_t + r))};
 
-    std::cout << phi_goce << std::endl << phi_mount << "\n\n\n\n" << std::endl;
-
     spherical_body earth (m_t, r_t);
     std::vector<spherical_body> mountains;
     position goce (r_t + d, 0., 0.);
-    std::vector<vector_field> grav_field;
+    std::vector<double> grav_field;
+
+    double earth_field = earth.gravitational_field(goce).mag();
+    std::cout << "The ideal Earth's gravitational field at GOCE orbit is " << earth_field << " N/kg." << std::endl;
 
     try
     {
@@ -35,21 +36,19 @@ int main(int argc, char** argv)
         {
             spherical_body mount(m, r, 's', r_t + r, i * phi_mount, M_PI / 2);
             mountains.push_back(mount);
-
-            std::cout << mount.get_mass() << ", " << mount.get_radius() << std::endl;
-            std::cout << mount.get_coordinate('s', 0) << ", " << mount.get_coordinate('s', 1) << ", " << mount.get_coordinate('s', 2) << std::endl;
-            std::cout << mount.get_coordinate(0) << ", " << mount.get_coordinate(1) << ", " << mount.get_coordinate(2) << std::endl << std::endl;
         }
-
-        std::cout << "\n\n\n\n" << std::endl;
 
         for (int i{}; i < std::floor(2 * M_PI / phi_goce); i++)
         {
             goce.set_coordinate('s', 1, i * phi_goce);
+            
+            vector_field G (goce);
+            for (spherical_body mount : mountains)
+            {
+                G += mount.gravitational_field(goce);
+            }
 
-            std::cout << i << std::endl;
-            std::cout << goce.get_coordinate('s', 0) << ", " << goce.get_coordinate('s', 1) << ", " << goce.get_coordinate('s', 2) << std::endl;
-            std::cout << goce.get_coordinate(0) << ", " << goce.get_coordinate(1) << ", " << goce.get_coordinate(2) << std::endl << std::endl;
+            grav_field.push_back(G.mag() / earth_field);
         }
     }
     catch(const std::exception& e)
