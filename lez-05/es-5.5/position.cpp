@@ -54,6 +54,13 @@ void position::set_coordinate(int n, double value)
 
 void position::set_coordinate(char type, int n, double value)
 {
+    double temp_r = get_coordinate('s', 0);
+    double temp_phi = get_coordinate('s', 1);
+    double temp_theta = get_coordinate('s', 2);
+
+    double temp_rho = get_coordinate('c', 0);
+    double temp_phi_c = get_coordinate('c', 1);
+
     switch (type)
     {
         case 's':
@@ -61,18 +68,18 @@ void position::set_coordinate(char type, int n, double value)
             switch (n)
             {
                 case 0: // r
-                    set_coordinate(0, value * cos(get_coordinate('s', 1)) * sin(get_coordinate('s', 2)));
-                    set_coordinate(1, value * sin(get_coordinate('s', 1)) * sin(get_coordinate('s', 2)));
-                    set_coordinate(2, value * cos(get_coordinate('s', 2)));
+                    set_coordinate(0, value * cos(temp_phi) * sin(temp_theta));
+                    set_coordinate(1, value * sin(temp_phi) * sin(temp_theta));
+                    set_coordinate(2, value * cos(temp_theta));
                     break;
                 case 1: // phi
-                    set_coordinate(0, get_coordinate('s', 0) * cos(value) * sin(get_coordinate('s', 2)));
-                    set_coordinate(1, get_coordinate('s', 0) * sin(value) * sin(get_coordinate('s', 2)));
+                    set_coordinate(0, temp_r * cos(value) * sin(temp_theta));
+                    set_coordinate(1, temp_r * sin(value) * sin(temp_theta));
                     break;
                 case 2: // theta
-                    set_coordinate(0, get_coordinate('s', 0) * cos(get_coordinate('s', 1)) * sin(value));
-                    set_coordinate(1, get_coordinate('s', 0) * sin(get_coordinate('s', 1)) * sin(value));
-                    set_coordinate(2, get_coordinate('s', 0) * cos(value));
+                    set_coordinate(0,temp_r * cos(temp_phi) * sin(value));
+                    set_coordinate(1,temp_r * sin(temp_phi) * sin(value));
+                    set_coordinate(2,temp_r * cos(value));
                     break;
 
                 default:
@@ -85,12 +92,12 @@ void position::set_coordinate(char type, int n, double value)
             switch (n)
             {
                 case 0: // rho
-                    set_coordinate(0, value * cos(get_coordinate('c', 1)));
-                    set_coordinate(1, value * sin(get_coordinate('c', 1)));
+                    set_coordinate(0, value * cos(temp_phi_c));
+                    set_coordinate(1, value * sin(temp_phi_c));
                     break;
                 case 1: // phi
-                    set_coordinate(0, get_coordinate('c', 0) * cos(value));
-                    set_coordinate(1, get_coordinate('c', 0) * sin(value));
+                    set_coordinate(0, temp_rho * cos(value));
+                    set_coordinate(1, temp_rho * sin(value));
                     break;
                 case 2: // z
                     set_coordinate(2, value);
@@ -150,7 +157,9 @@ double position::get_coordinate (char type, int n) const
             switch (n)
             {
                 case 0: return sqrt(x*x + y*y + z*z); // r
-                case 1: return atan(y / x); // phi
+                case 1: // phi
+                    if (atan2(y, x) < 0) { return (2 * M_PI + atan2(y, x)); }
+                    else { return atan2(y, x); }
                 case 2: return acos(z / sqrt(x*x + y*y + z*z)); // theta
 
                 default:
@@ -162,7 +171,9 @@ double position::get_coordinate (char type, int n) const
             switch (n)
             {
                 case 0: return sqrt(x*x + y*y); // rho
-                case 1: return atan(y / x); // phi
+                case 1: // phi
+                    if (atan2(y, x) < 0) { return (2 * M_PI + atan2(y, x)); }
+                    else { return atan2(y, x); }
                 case 2: return acos(z / sqrt(x*x + y*y + z*z)); // z
 
                 default:
