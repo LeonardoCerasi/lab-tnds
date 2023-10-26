@@ -3,6 +3,7 @@
 *.dat
 *.in
 *.out
+*.log
 *.test
 *.png
 *.jpg
