@@ -1,16 +1,16 @@
 #pragma once
 
-const double e = 1.60217646e-19;
-const double m_p = 1.67262158e-27;
-const double m_e = 9.10938188e-31;
+const double e{1.60217646e-19};
+const double m_p{1.67262158e-27};
+const double m_e{9.10938188e-31};
 
-    class particle
+class particle
 {
     protected:
 
         // intrinsic properties
-        double m = 0.;
-        double q = 0.;
+        double m{};
+        double q{};
 
     public:
 

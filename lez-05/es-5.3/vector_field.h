@@ -4,18 +4,22 @@
 
 #include "position.h"
 
+const double k{8.9875517923e9};
+const double g{6.67430e-11};
+
 class vector_field : public position
 {
     protected:
 
         // components of vector
-        double f_x = 0.;
-        double f_y = 0.;
-        double f_z = 0.;
+        double f_x{};
+        double f_y{};
+        double f_z{};
 
     public:
 
         // constructors
+        vector_field () {}
         vector_field (double, double, double);
         vector_field (const position&);
         vector_field (double, double, double, double, double, double);
@@ -29,8 +33,6 @@ class vector_field : public position
         // set methods
         void set_component (int, double);
         void set_components (double, const position&);
-        void set_position (double, double, double);
-        void set_position (const position&);
 
         // get methods
         double get_component (int) const;
