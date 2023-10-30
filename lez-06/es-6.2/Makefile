@@ -18,7 +18,7 @@ functions.o: functions.cpp functions.h func.h
 		-c \
 		${CXXFLAGS}
 
-bisection.o: bisection.cpp bisection.h sign.h func.h roots.h
+bisection.o: bisection.cpp bisection.h func.h roots.h
 	g++ bisection.cpp \
 		-c \
 		${CXXFLAGS}

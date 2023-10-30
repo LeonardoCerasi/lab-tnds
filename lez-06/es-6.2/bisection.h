@@ -2,7 +2,6 @@
 
 #include <iostream>
 
-#include "sign.h"
 #include "func.h"
 #include "roots.h"
 
@@ -13,7 +12,7 @@ class bisection : public roots
         bisection () {}
         bisection (double);
         bisection (double, int);
-        virtual ~bisection() {std::cout << "destructor" << std::endl;}
+        virtual ~bisection() {}
 
         virtual double find_roots(double, double, const function &) override;
 };
