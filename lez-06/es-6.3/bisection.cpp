@@ -20,8 +20,8 @@ double bisection::find_roots (double x_min, double x_max, const function& func)
         c = (a + b) / 2;
         fc = func.eval(c);
 
-        if (sign(fa) * sign(fc)) { b = c; fb = fc; }
-        else if (sign(fc) * sign(fb)) { a = c; fa = fc; }
+        if (sign(fa) * sign(fc) < 0) { b = c; fb = fc; }
+        else if (sign(fc) * sign(fb) < 0) { a = c; fa = fc; }
         else { return (fa == 0 ? a : (fb == 0 ? b : c)); }
 
         n_iter++;
