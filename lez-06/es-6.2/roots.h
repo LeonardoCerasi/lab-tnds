@@ -21,7 +21,7 @@ class roots
             precision = epsilon;
             n_max = max_iter;
         }
-        virtual ~roots() { std::cout << "destructor" << std::endl; }
+        virtual ~roots() {}
 
         virtual double find_roots (double, double, const function &) = 0;
 
