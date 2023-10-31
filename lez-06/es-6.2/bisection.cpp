@@ -1,7 +1,5 @@
 #include "bisection.h"
 
-
-
 bisection::bisection (double epsilon) : roots(epsilon) {}
 
 bisection::bisection(double epsilon, int max_iter) : roots(epsilon, max_iter) {}
