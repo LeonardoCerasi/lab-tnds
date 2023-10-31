@@ -5,9 +5,12 @@
 #include "functions.h"
 #include "bisection.h"
 #include "secant.h"
+#include "assert.h"
 
 int main(int argc, char** argv)
 {
+    test::test_bisection();
+
     if (argc < 2)
     {
         std::cerr << "Usage: " << argv[0] << " <precision>" << std::endl;
@@ -15,7 +18,7 @@ int main(int argc, char** argv)
     }
     int epsilon{atoi(argv[1])};
     tangent_eq t;
-    secant s(pow(10, -epsilon));
+    secant s (pow(10, -epsilon));
 
     for (int i{0}; i <= 20; i++)
     {

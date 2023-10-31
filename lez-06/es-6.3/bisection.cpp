@@ -20,17 +20,11 @@ double bisection::find_roots (double x_min, double x_max, const function& func)
         c = (a + b) / 2;
         fc = func.eval(c);
 
-        if ((fa == 0 ? 0 : (fa > 0 ? 1 : -1)) * (fc == 0 ? 0 : (fc > 0 ? 1 : -1)) < 0)
-        {
-            b = c;
-            fb = fc;
-        }
-        else if ((fb == 0 ? 0 : (fb > 0 ? 1 : -1)) * (fc == 0 ? 0 : (fc > 0 ? 1 : -1)) < 0)
-        {
-            a = c;
-            fa = fc;
-        }
+        if (sign(fa) * sign(fc)) { b = c; fb = fc; }
+        else if (sign(fc) * sign(fb)) { a = c; fa = fc; }
         else { return (fa == 0 ? a : (fb == 0 ? b : c)); }
+
+        n_iter++;
     }
 
     return ((a + b) / 2);
