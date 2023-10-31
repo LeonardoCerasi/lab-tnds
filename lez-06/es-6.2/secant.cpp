@@ -8,16 +8,8 @@ double secant::find_roots(double x_min, double x_max, const function &func)
 {
     int n_iter = 0;
 
-    if (x_min < x_max)
-    {
-        a = x_min;
-        b = x_max;
-    }
-    else
-    {
-        a = x_max;
-        b = x_min;
-    }
+    if (x_min < x_max) { a = x_min; b = x_max; }
+    else { a = x_max; b = x_min; }
 
     double fa = func.eval(a);
     double fb = func.eval(b);
@@ -28,8 +20,8 @@ double secant::find_roots(double x_min, double x_max, const function &func)
         c = b - (func.eval(b) * (b - a)) / (func.eval(b) - func.eval(a));
         fc = func.eval(c);
 
-        if (sign(fa) * sign(fc)) { b = c; fb = fc; }
-        else if (sign(fc) * sign(fb)) { a = c; fa = fc; }
+        if (sign(fa) * sign(fc) < 0) { b = c; fb = fc; }
+        else if (sign(fc) * sign(fb) < 0) { a = c; fa = fc; }
         else { return (fa == 0 ? a : (fb == 0 ? b : c)); }
 
         n_iter++;
