@@ -2,6 +2,7 @@
 
 #include <iostream>
 
+#include "sign.h"
 #include "func.h"
 #include "roots.h"
 
