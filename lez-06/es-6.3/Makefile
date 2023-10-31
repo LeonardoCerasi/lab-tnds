@@ -7,9 +7,9 @@ main: main.o functions.o bisection.o secant.o
 		-o main \
 		${CXXFLAGS} ${LIBS} \
 		&& rm *.o \
-		&& ./main
+		&& ./main 16 > log.log
 
-main.o: main.cpp functions.h bisection.h assert.h
+main.o: main.cpp functions.h bisection.h
 	g++ main.cpp \
 		-c \
 		${CXXFLAGS} ${INCS}
