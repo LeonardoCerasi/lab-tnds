@@ -2,7 +2,7 @@
 
 bisection::bisection (double epsilon) : roots(epsilon) {}
 
-bisection::bisection(double epsilon, int max_iter) : roots(epsilon, max_iter) {}
+bisection::bisection (double epsilon, int max_iter) : roots(epsilon, max_iter) {}
 
 double bisection::find_roots (double x_min, double x_max, const function& func)
 {

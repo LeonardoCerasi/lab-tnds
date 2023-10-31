@@ -15,5 +15,5 @@ class bisection : public roots
         bisection (double, int);
         virtual ~bisection() {std::cout << "destructor" << std::endl;}
 
-        virtual double find_roots(double, double, const function &) override;
+        virtual double find_roots (double, double, const function &) override;
 };
