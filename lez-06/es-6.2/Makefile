@@ -6,9 +6,10 @@ main: main.o functions.o bisection.o
 	g++ main.o functions.o bisection.o \
 		-o main \
 		${CXXFLAGS} ${LIBS} \
-		&& rm *.o
+		&& rm *.o \
+		&& ./main
 
-main.o: main.cpp functions.h bisection.h
+main.o: main.cpp functions.h bisection.h assert.h
 	g++ main.cpp \
 		-c \
 		${CXXFLAGS} ${INCS}
