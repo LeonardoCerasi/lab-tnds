@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cmath>
+
 #include "func.h"
 
 class parabola : public function
@@ -19,4 +21,13 @@ class parabola : public function
         void set_params (double, double, double);
 
         double vertex () const;
+};
+
+class tangent_eq : public function
+{
+    public:
+
+        tangent_eq () {}
+
+        double eval (double) const override;
 };

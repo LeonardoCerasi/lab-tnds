@@ -42,6 +42,8 @@ double secant::find_roots(double x_min, double x_max, const function &func)
         {
             return (fa == 0 ? a : (fb == 0 ? b : c));
         }
+
+        n_iter++;
     }
 
     return ((a + b) / 2);

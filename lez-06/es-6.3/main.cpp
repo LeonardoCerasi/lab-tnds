@@ -6,18 +6,23 @@
 #include "bisection.h"
 #include "secant.h"
 
-int main()
+int main(int argc, char** argv)
 {
-    int epsilon;
-    std::cout << "\nPrecision (max 1e-16): 1e-";
-    std::cin >> epsilon;
-    parabola p (3, 5, -2);
-    bisection b (pow(10, -epsilon));
+    if (argc < 2)
+    {
+        std::cerr << "Usage: " << argv[0] << " <precision>" << std::endl;
+        return -1;
+    }
+    int epsilon{atoi(argv[1])};
+    tangent_eq t;
     secant s(pow(10, -epsilon));
 
-    std::cout << "\nZero between 0 and 1: " <<std::endl;
-    std::cout << "(bisection)\t" << std::fixed << std::setprecision(-log10(b.get_precision())) << b.find_roots(0, 1, p) << std::endl << std::endl;
-    std::cout << "(secant)\t" << std::fixed << std::setprecision(-log10(b.get_precision())) << s.find_roots(0, 1, p) << std::endl << std::endl;
+    for (int i{0}; i <= 20; i++)
+    {
+        std::cout << "\nInterval (" << i << "pi, " << i << "pi + pi/2):" << std::endl;
+        double root{s.find_roots(i*M_PI, (i*M_PI + M_PI_2), t)};
+        std::cout << std::fixed << std::setprecision(-log10(s.get_precision()))<< root << std::endl << std::endl;
+    }
 
     return 0;
 }

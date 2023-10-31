@@ -23,3 +23,10 @@ double parabola::vertex () const
 {
     return (-b / (2 * a));
 }
+
+/////////
+
+double tangent_eq::eval (double x) const
+{
+    return (sin(x) - x * cos(x));
+}
