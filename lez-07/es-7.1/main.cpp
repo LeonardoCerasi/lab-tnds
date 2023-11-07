@@ -20,7 +20,7 @@ int main (int argc, char** argv)
     int n_end = std::atoi(argv[2]);
 
     auto func {[] (double x) -> double { return std::sin(x); }};
-    trapezoidal integ;
+    simpson integ;
 
     TGraph graph;
     for (int i{n_start}; i <= n_end; i++)
