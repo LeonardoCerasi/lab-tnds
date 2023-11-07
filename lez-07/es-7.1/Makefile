@@ -7,7 +7,7 @@ main: main.o simpson.o
 		-o main \
 		${CXXFLAGS} ${LIBS} \
 		&& rm *.o \
-		&& ./main 100 1000
+		&& ./main 10 10000
 
 main.o: main.cpp simpson.h
 	g++ main.cpp \

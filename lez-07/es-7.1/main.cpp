@@ -7,9 +7,12 @@
 #include "TAxis.h"
 
 #include "simpson.h"
+#include "assert.h"
 
 int main (int argc, char** argv)
 {
+    test::test_simpson();
+
     if (argc < 3)
     {
         std::cerr << "Usage: " << argv[0] << " <n_start> <n_end>" << std::endl;
@@ -30,6 +33,8 @@ int main (int argc, char** argv)
 
     TCanvas canvas;
     canvas.cd();
+    canvas.SetLogx();
+    canvas.SetLogy();
     graph.Draw();
     graph.SetTitle("Error of Simpson numerical integration");
     graph.GetXaxis()->SetTitle("h");

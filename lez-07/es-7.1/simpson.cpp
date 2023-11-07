@@ -4,12 +4,7 @@ double simpson::calculate(double a, double b, std::function<double(double)> func
 {
     double h {(b - a) / n_steps};
     double integ {func(a) + func(b)};
-
-    for (int i {}; i < n_steps; i++)
-    {
-        if (i % 2 == 0) { integ += 2 * func(a + i * h); }
-        else { integ += 4 * func(a + i * h); }
-    }
+    for (int i {1}; i < n_steps; i++) { integ += 2 * (1 + i % 2) * func(a + i * h); }
 
     return (integ * h / 3.);
 }
