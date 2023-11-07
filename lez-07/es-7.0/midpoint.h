@@ -4,9 +4,11 @@
 
 class midpoint : public numeric_integral
 {
-public:
-    midpoint() {}
-    ~midpoint() {}
+    private:
 
-    double integral(double, double, std::function<double(double)>, int) override;
+        double calculate(double, double, std::function<double (double)>, int);
+        
+    public:
+
+        double integral(double, double, std::function<double(double)>, int) override;
 };
