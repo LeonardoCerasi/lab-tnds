@@ -7,9 +7,12 @@
 #include "TAxis.h"
 
 #include "midpoint.h"
+#include "assert.h"
 
 int main(int argc, char** argv)
 {
+    test::test_midpoint();
+
     if (argc < 3)
     {
         std::cerr << "Usage: " << argv[0] << " <n_start> <n_end>" << std::endl;
