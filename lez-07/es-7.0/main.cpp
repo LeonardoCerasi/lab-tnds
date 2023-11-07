@@ -33,6 +33,8 @@ int main(int argc, char** argv)
 
     TCanvas canvas;
     canvas.cd();
+    canvas.SetLogx();
+    canvas.SetLogy();
     graph.Draw();
     graph.SetTitle("Error of Midpoint numerical integration");
     graph.GetXaxis()->SetTitle("h");
