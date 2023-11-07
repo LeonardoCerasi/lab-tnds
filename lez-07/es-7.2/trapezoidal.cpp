@@ -20,8 +20,9 @@ double trapezoidal::int_sigma(double a, double b, std::function<double(double)> 
 double trapezoidal::integral(double x_min, double x_max, std::function<double(double)> func, double precision)
 {
     double a, b;
+    int sign{1};
     if (x_min < x_max) { a = x_min; b = x_max; }
-    else { a = x_max; b = x_min; }
+    else { a = x_max; b = x_min; sign = -1; }
 
     int n{};
     double int_1{int_sigma(a, b, func, n)}, int_2{int_sigma(a, b, func, n + 1)};
@@ -33,5 +34,5 @@ double trapezoidal::integral(double x_min, double x_max, std::function<double(do
         int_2 = int_sigma(a, b, func, n + 1);
     }
 
-    return int_2;
+    return (sign * int_2);
 }
