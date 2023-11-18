@@ -25,7 +25,7 @@ int main()
         {
             double t_max{70.};
             std::array<double, 2> x{0., 1.};
-            auto osc{[&x](double t) -> std::array<double, 2> { return std::array<double, 2>{x[1], -x[0]}; }};
+            auto osc{[](double t, const std::array<double, 2> &x) -> std::array<double, 2> { return std::array<double, 2>{x[1], -x[0]}; }};
             euler<2> eq;
             TGraph graph_h;
 
