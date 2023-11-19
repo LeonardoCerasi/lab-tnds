@@ -15,6 +15,7 @@
 int main()
 {
     test::test_array();
+    test::test_runge_kutta();
 
     std::vector<double> steps;
     std::vector<double> errors;
