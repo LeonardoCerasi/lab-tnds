@@ -15,6 +15,7 @@
 int main()
 {
     test::test_array();
+    test::test_runge_kutta();
 
     double h{0.001};
     auto osc{[](double t, const std::array<double, 2> &x) -> std::array<double, 2> { return std::array<double, 2>{x[1], -9.80665 * std::sin(x[0])}; }};
@@ -56,7 +57,7 @@ int main()
     graph.SetTitle("Pendulum's period of oscillations");
     graph.GetXaxis()->SetTitle("A [rad]");
     graph.GetYaxis()->SetTitle("T [s]");
-    canvas.SaveAs("graph_errors.png");
+    canvas.SaveAs("graph_periods.png");
 
     return 0;
 }
