@@ -14,6 +14,7 @@
 int main()
 {
     test::test_array();
+    test::test_euler();
 
     std::vector<double> steps;
     std::vector<double> errors;
