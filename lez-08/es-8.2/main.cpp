@@ -51,6 +51,7 @@ int main()
             // canva.SetGridx();
             // canva.SetGridy();
             // graph_h.Draw("ALP");
+            // graph_h.SetMarkerStyle(20);
             // std::string title{"Harmonic oscillator (h = " + std::to_string(h) + " s)"};
             // graph_h.SetTitle(title.c_str());
             // graph_h.GetXaxis()->SetTitle("t [s]");
@@ -74,6 +75,8 @@ int main()
     canvas.SetGridx();
     canvas.SetGridy();
     graph.Draw("ALP");
+    graph.SetMarkerStyle(20);
+    graph.SetMarkerSize(0.6);
     graph.SetTitle("Runge-Kutta method's error");
     graph.GetXaxis()->SetTitle("h [s]");
     graph.GetYaxis()->SetTitle("error [m]");

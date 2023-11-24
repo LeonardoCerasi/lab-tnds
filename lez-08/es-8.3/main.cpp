@@ -54,6 +54,8 @@ int main()
     canvas.SetGridx();
     canvas.SetGridy();
     graph.Draw("ALP");
+    graph.SetMarkerStyle(20);
+    graph.SetMarkerSize(0.6);
     graph.SetTitle("Pendulum's period of oscillations");
     graph.GetXaxis()->SetTitle("A [rad]");
     graph.GetYaxis()->SetTitle("T [s]");
