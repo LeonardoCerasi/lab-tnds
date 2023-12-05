@@ -7,7 +7,7 @@ main: main.o
 		-o main \
 		${CXXFLAGS} ${LIBS} \
 		&& rm *.o \
-		&& echo && ./main > log.log && echo
+		&& echo && ./main && echo
 
 main.o: main.cpp arr_op.h assert.h runge_kutta.h
 	g++ main.cpp \

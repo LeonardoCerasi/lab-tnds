@@ -59,7 +59,7 @@ int main()
             t += h;
         }
 
-        double amplitude{find_amplitude(time, position, velocity, 15. / a)};
+        double amplitude{find_amplitude(time, position, velocity, t_max / 2., h)};
         std::cout << w << "\t\t" << amplitude << "\n\n" << std::endl;
 
         omega.push_back(w);
@@ -69,7 +69,6 @@ int main()
     for (int i{}; i < (int) amplitudes.size(); i++)
     {
         graph.SetPoint(i, omega[i], amplitudes[i]);
-        std::cout << omega[i] << "\t" << amplitudes[i] << std::endl;
     }
 
     TCanvas canvas;
