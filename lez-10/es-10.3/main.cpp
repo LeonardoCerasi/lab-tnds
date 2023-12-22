@@ -16,8 +16,8 @@ int main()
     multi_integral integ{1};
 
     auto func{[] (std::vector<double> x) -> double { return (10 + 5 * std::cos(4 * x[1]) * std::sin(7 * x[0]) / std::pow(x[0], 2)); }};
-    std::vector<double> a{1, 2};
-    std::vector<double> b{1, 2};
+    std::vector<double> a{1, 1};
+    std::vector<double> b{2, 2};
 
     std::cout << integ.integral(func, a, b, NUMBER) << std::endl;
 
