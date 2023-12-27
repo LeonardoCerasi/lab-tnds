@@ -11,20 +11,6 @@ double mean(std::vector<double> v)
     return (sum / (double)v.size());
 }
 
-double mean(std::vector<double> v, double n)
-{
-    double sum;
-    for (double x : v) { sum += std::pow(x, n); }
-    return (sum / (double)v.size());
-}
-
-double mean(std::vector<double> v_1, std::vector<double> v_2)
-{
-    double sum;
-    for (int i{}; i < (int)v_1.size(); i++) { sum += v_1[i] * v_2[i]; }
-    return (sum / (double)v_1.size());
-}
-
 double std_dev(std::vector<double> v)
 {
     double m{mean(v)};
@@ -35,9 +21,17 @@ double std_dev(std::vector<double> v)
 
 double corr(std::vector<double> v_1, std::vector<double> v_2)
 {
-    std::cout << mean(v_1, v_2) - mean(v_1) * mean(v_2) << std::endl;
-    std::cout << mean(v_1, 2) - std::pow(mean(v_1), 2) << std::endl;
-    std::cout << mean(v_2, 2) - std::pow(mean(v_2), 2) << std::endl;
+    double mean_1{}, mean_2{};
+    for (int i{}; i < (int)v_1.size(); i++) { mean_1 += v_1[i]; mean_2 += v_2[i]; }
+    mean_1 = mean_1 / (double)v_1.size();
+    mean_2 = mean_2 / (double)v_2.size();
 
-    return (mean(v_1, v_2) - mean(v_1) * mean(v_2)) / (std::sqrt(mean(v_1, 2) - std::pow(mean(v_1), 2)) * std::sqrt(mean(v_2, 2) - std::pow(mean(v_2), 2)));
+    double sum{};
+    for (int i{}; i < (int)v_1.size(); i++) { sum += (v_1[i] - mean_1) * (v_2[i] - mean_2); }
+    double sum_1{};
+    for (int i{}; i < (int)v_1.size(); i++) { sum_1 += (v_1[i] - mean_1) * (v_1[i] - mean_1); }
+    double sum_2{};
+    for (int i{}; i < (int)v_1.size(); i++) { sum_2 += (v_2[i] - mean_2) * (v_2[i] - mean_2); }
+
+    return sum / std::sqrt(sum_1 * sum_2);
 }
