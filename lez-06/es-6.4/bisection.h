@@ -4,7 +4,6 @@
 #include <functional>
 
 #include "sign.h"
-#include "func.h"
 #include "roots.h"
 
 class bisection : public roots
@@ -16,6 +15,5 @@ class bisection : public roots
         bisection (double, int);
         virtual ~bisection () {}
 
-        virtual double find_roots (double, double, const function &) override;
         virtual double find_roots(double, double, std::function<double(double)> func) override;
 };

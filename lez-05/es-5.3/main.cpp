@@ -40,6 +40,16 @@ int main(int argc, char** argv)
             vector_field elec_field{proton.electric_field(point) + electron.electric_field(point)};
             graph.SetPoint(i-100, i, elec_field.mag());
         }
+
+        double alpha{};
+        position P_1{0, 0, 100*d};
+        position P_2{0, 0, 1000*d};
+        position O{0, 0, 0};
+        vector_field E_1{proton.electric_field(P_1) + electron.electric_field(P_1)};
+        vector_field E_2{proton.electric_field(P_2) + electron.electric_field(P_2)};
+        alpha = log(E_1.mag() / E_2.mag()) / log(P_1.dist(O) / P_2.dist(O));
+
+        std::cout << "Power law with index: " << alpha << std::endl;
     }
     catch(const std::exception& e)
     {

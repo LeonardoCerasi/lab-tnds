@@ -2,15 +2,11 @@
 #include <iomanip>
 #include <cmath>
 
-#include "functions.h"
 #include "bisection.h"
 #include "secant.h"
-#include "assert.h"
 
 int main()
 {
-    test::test_bisection();
-
     int epsilon;
     std::cout << "\nPrecision: 1e-";
     std::cin >> epsilon;

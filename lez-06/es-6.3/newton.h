@@ -4,6 +4,7 @@
 
 #include "func.h"
 #include "roots.h"
+#include "sign.h"
 
 class newton : public roots
 {

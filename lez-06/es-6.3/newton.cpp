@@ -29,12 +29,12 @@ double newton::find_roots(double x_min, double x_max, const function &func)
         c = b - (func.eval(b) * (b - a)) / (func.eval(b) - func.eval(a));
         fc = func.eval(c);
 
-        if ((fa == 0 ? 0 : (fa > 0 ? 1 : -1)) * (fc == 0 ? 0 : (fc > 0 ? 1 : -1)) < 0)
+        if (sign(fa) * sign(fc) < 0)
         {
             b = c;
             fb = fc;
         }
-        else if ((fb == 0 ? 0 : (fb > 0 ? 1 : -1)) * (fc == 0 ? 0 : (fc > 0 ? 1 : -1)) < 0)
+        else if (sign(fb) * sign(fc) < 0)
         {
             a = c;
             fa = fc;

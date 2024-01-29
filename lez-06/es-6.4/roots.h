@@ -3,8 +3,6 @@
 #include <iostream>
 #include <functional>
 
-#include "func.h"
-
 class roots
 {
     protected:
@@ -24,7 +22,6 @@ class roots
         }
         virtual ~roots() {}
 
-        virtual double find_roots (double, double, const function &) = 0;
         virtual double find_roots(double, double, std::function<double (double)>) = 0;
 
         void set_precision(double epsilon) { precision = epsilon; }

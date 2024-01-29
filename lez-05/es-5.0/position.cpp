@@ -60,7 +60,7 @@ double position::get_coordinate (char type, int n) const
             switch (n)
             {
                 case 0: return sqrt(x*x + y*y + z*z); // r
-                case 1: return atan(y / x); // phi
+                case 1: return atan2(y, x); // phi
                 case 2: return acos(z / sqrt(x*x + y*y + z*z)); // theta
 
                 default:
@@ -72,7 +72,7 @@ double position::get_coordinate (char type, int n) const
             switch (n)
             {
                 case 0: return sqrt(x*x + y*y); // rho
-                case 1: return atan(y / x); // phi
+                case 1: return atan2(y, x); // phi
                 case 2: return acos(z / sqrt(x*x + y*y + z*z)); // theta
 
                 default:
