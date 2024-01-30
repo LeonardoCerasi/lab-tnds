@@ -1,6 +1,7 @@
 #pragma once
 
 #include <functional>
+#include <stdexcept>
 
 #include "random_gen.h"
 
@@ -17,6 +18,8 @@ class multi_integral
 
         double integral(const std::function<double(std::vector<double>)> func, std::vector<double> a, std::vector<double> b, int N)
         {
+            if (a.size() != b.size()) { throw std::invalid_argument("The points given must have the same dimension."); }
+
             int sign{1};
             for (int i{}; i < (int)a.size(); i++)
             {

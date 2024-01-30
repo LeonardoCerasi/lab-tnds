@@ -19,7 +19,8 @@ int main()
     std::vector<double> a{1, 1};
     std::vector<double> b{2, 2};
 
-    std::cout << integ.integral(func, a, b, NUMBER) << std::endl;
+    try { std::cout << integ.integral(func, a, b, NUMBER) << std::endl; }
+    catch(const std::exception &e) { std::cerr << e.what() << std::endl; }
 
     return 0;
 }

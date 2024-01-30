@@ -40,11 +40,15 @@ int main()
         TH1F hist_mean{"mc_mean", "mc_mean", 100, 0, 4};
         TH1F hist_hm{"mc_hm", "mc_hm", 100, 0, 4};
 
+        // if data already present, these are skipped
+
         integrals_mean(mc_mean, func, 0, M_PI, 1, N, prec, NUMBER);
         std::vector<double> integs_mean{read_file("data/log_mean_" + std::to_string(N) + ".dat")};
 
         integrals_hm(mc_hm, func, 0, M_PI, 1, N, prec, NUMBER);
         std::vector<double> integs_hm{read_file("data/log_hm_" + std::to_string(N) + ".dat")};
+
+        //
 
         for (double i : integs_mean) { hist_mean.Fill(i); }
         errors_mean.push_back(std_dev(integs_mean));

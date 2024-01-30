@@ -4,14 +4,28 @@
 #include <cmath>
 #include <vector>
 
-double mean(std::vector<double> v)
+double max(const std::vector<double> &v)
+{
+    double x{v[0]};
+    for (int i{1}; i < (int)v.size(); i++) { if (v[i] > x) { x = v[i]; } }
+    return x;
+}
+
+double min(const std::vector<double> &v)
+{
+    double x{v[0]};
+    for (int i{1}; i < (int)v.size(); i++) { if (v[i] < x) { x = v[i]; } }
+    return x;
+}
+
+double mean(std::vector<double> &v)
 {
     double sum;
     for (double x : v) { sum += x; }
     return (sum / (double)v.size());
 }
 
-double std_dev(std::vector<double> v)
+double std_dev(std::vector<double> &v)
 {
     double m{mean(v)};
     double sum{};
@@ -19,7 +33,7 @@ double std_dev(std::vector<double> v)
     return std::sqrt(sum / ((double)v.size() - 1.));
 }
 
-double corr(std::vector<double> v_1, std::vector<double> v_2)
+double corr(std::vector<double> &v_1, std::vector<double> &v_2)
 {
     double mean_1{}, mean_2{};
     for (int i{}; i < (int)v_1.size(); i++) { mean_1 += v_1[i]; mean_2 += v_2[i]; }
