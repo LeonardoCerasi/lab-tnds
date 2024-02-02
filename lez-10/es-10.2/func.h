@@ -5,6 +5,20 @@
 #include <string>
 #include <fstream>
 
+double max(const std::vector<double> &v)
+{
+    double x{v[0]};
+    for (int i{1}; i < (int)v.size(); i++) { if (v[i] > x) { x = v[i]; } }
+    return x;
+}
+
+double min(const std::vector<double> &v)
+{
+    double x{v[0]};
+    for (int i{1}; i < (int)v.size(); i++) { if (v[i] < x) { x = v[i]; } }
+    return x;
+}
+
 double mean(std::vector<double> v)
 {
     double sum;

@@ -40,25 +40,3 @@ void integrals_hm(mc_int_hm mc_hm, std::function<double(double)> func, double a,
         }
     }
 }
-
-int n_precision(std::vector<int> numbers, std::vector<double> errors, double prec)
-{
-    prec = std::log10(prec);
-    for (int i{}; i < (int)numbers.size(); i++)
-    {
-        numbers[i] = std::log10(numbers[i]);
-        errors[i] = std::log10(errors[i]);
-    }
-
-    std::vector<double> n;
-    for (int i{}; i < (int)numbers.size() - 1; i++)
-    {
-        for (int j{i + 1}; j < (int)numbers.size(); j++)
-        {
-            n.push_back(numbers[i] + (prec - errors[i]) * (numbers[i] - numbers[j]) / (errors[i] - errors[j]));
-        }
-    }
-
-    double n_prec{mean(n)};
-    return (int)std::pow(10, n_prec);
-}

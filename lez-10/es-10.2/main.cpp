@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include <string>
+#include <iomanip>
 
 #include "TH1F.h"
 #include "TCanvas.h"
@@ -85,9 +86,21 @@ int main()
     canvas_hm.SetLogy();
     graph_hm.Draw();
 
-    std::cout << "In order to obtain error " << prec << ", N must be:" << std::endl;
-    std::cout << "(mean)\t" << n_precision(numbers, errors_mean, prec) << std::endl;
-    std::cout << "(hm)\t" << n_precision(numbers, errors_hm, prec) << std::endl;
+    // σ = k / sqrt(N)
+
+    std::vector<double> k_mean_v{};
+    std::vector<double> k_hm_v{};
+    for (int i{}; i < (int)numbers.size(); i++)
+    {
+        k_mean_v.push_back(errors_mean.at(i) * std::sqrt(numbers.at(i)));
+        k_hm_v.push_back(errors_hm.at(i) * std::sqrt(numbers.at(i)));
+    }
+    double k_mean{mean(k_mean_v)};
+    double k_hm{mean(k_hm_v)};
+
+    std::cout << "In order to obtain σ = " << prec << ", N must be:" << std::endl;
+    std::cout << std::fixed << "(mean)\t" << (int)std::pow(k_mean / prec, 2) << std::endl;
+    std::cout << std::fixed << "(hm)\t" << (int)std::pow(k_hm / prec, 2) << std::endl;
 
     return 0;
 }
