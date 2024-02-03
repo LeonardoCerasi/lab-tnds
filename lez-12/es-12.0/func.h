@@ -3,6 +3,7 @@
 #include <iostream>
 #include <cmath>
 #include <vector>
+#include <stdexcept>
 
 double max(const std::vector<double> &v)
 {
@@ -35,6 +36,8 @@ double std_dev(std::vector<double> &v)
 
 double corr(std::vector<double> &v_1, std::vector<double> &v_2)
 {
+    if (v_1.size() != v_2.size()) { throw std::invalid_argument("corr : datasets must have the same dimension."); }
+
     double mean_1{}, mean_2{};
     for (int i{}; i < (int)v_1.size(); i++) { mean_1 += v_1[i]; mean_2 += v_2[i]; }
     mean_1 = mean_1 / (double)v_1.size();
