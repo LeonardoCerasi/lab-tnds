@@ -21,7 +21,7 @@ double min(const std::vector<double> &v)
 
 double mean(std::vector<double> &v)
 {
-    double sum;
+    double sum{};
     for (double x : v) { sum += x; }
     return (sum / (double)v.size());
 }
